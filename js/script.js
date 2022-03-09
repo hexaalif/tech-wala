@@ -14,16 +14,10 @@ const searchPhone = () => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
     fetch(url)
       .then((res) => res.json())
-      .then((api) => displayPhoneResult(api.data))
+      .then((api) => displayPhoneResult(api.data));
 
-      .catch((error) => displayError(error));
     document.getElementById("phone-details").innerHTML = "";
   }
-};
-
-// error handle
-const displayError = (error) => {
-  document.getElementById("alert2").style.display = "block";
 };
 
 // Search Data show
@@ -33,11 +27,6 @@ const displayPhoneResult = (data) => {
   }
   const searchResult = document.getElementById("search-result");
   searchResult.innerHTML = "";
-
-  if (searchResult == "") {
-    document.getElementById("alert2").style.display = "none";
-    console.log("hah");
-  }
   data.splice(0, 20).forEach((datas) => {
     const div = document.createElement("div");
     div.classList.add("col");
