@@ -1,17 +1,38 @@
+// error message block
+document.getElementById('alert').style.display = 'none';
+document.getElementById('alert2').style.display = 'none';
+// input value clear & get input
 const searchPhone = () => {
     const searchInput = document.getElementById('search-input');
     const searchText = searchInput.value;
-    // console.log(searchText);
     searchInput.value = '';
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
-    // console.log(url)
-    fetch(url)
-    .then(res => res.json())
-    .then(api => displayPhoneResult(api.data))
+    
+    if(searchText === ""){
+        document.getElementById('alert2').style.display = 'block';
+    }
+    else{
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
+        fetch(url)
+        .then(res => res.json())
+        .then(api => displayPhoneResult(api.data))
+
+        .catch((error) => displayError(error))
+    }
 }
 
+// error handle
+const displayError = error => {
+    document.getElementById('alert2').style.display = 'block';
+}
+
+// Search Data show
 const displayPhoneResult = data => {
     const searchResult = document.getElementById('search-result');
+    searchResult.innerHTML = '';
+    if(searchResult == ''){
+        document.getElementById('alert').style.display = 'none';
+        console.log('hah')
+    }
     data.forEach(datas => {
         const div = document.createElement('div');
         div.classList.add('col');
@@ -29,6 +50,7 @@ const displayPhoneResult = data => {
     })
 }
 
+// getting phone id
 const loadDetails = phoneId => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
     fetch(url)
@@ -36,9 +58,11 @@ const loadDetails = phoneId => {
     .then(main => displayDetails(main.data))
 }
 
+// more details dynamically
 const displayDetails = phone => {
     console.log(phone);
-    const phoneDetails = document.getElementById('phone-details')
+    const phoneDetails = document.getElementById('phone-details');
+    phoneDetails.textContent = '';
     const div = document.createElement('div')
     div.classList.add('row');
     div.innerHTML = `

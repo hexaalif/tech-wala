@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phone-wala</title>
+    <title>Tech-wala</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-dark">
-    <h1 class="text-center my-3 text-white">Phone-Wala</h1>
+    <h1 class="text-center my-3 text-white">Tech-Wala</h1>
     
     <!-- phone search input & btn -->
     <div class="input-group mb-3 w-50 mx-auto">
-        <input id="search-input" type="text" class="form-control" placeholder="Search Phone Details">
-        <button onclick="searchPhone()" id="search-btn" class="btn btn-outline-secondary text-white fw-bold" type="button">Button</button>
+        <input id="search-input" type="text" class="form-control" placeholder="Search Tech Details">
+        <button onclick="searchPhone()" id="search-btn" class="btn btn-outline-secondary text-white fw-bold" type="button">Search</button>
     </div>
-    
+
+    <!-- error code show  -->
+    <div>
+        <h5 id="alert" class="text-center fw-bold text-danger">No result found</h5>
+    </div>
+    <div>
+        <h5 id="alert2" class="text-center fw-bold text-danger">please write something</h5>
+    </div>
+     
     <!-- single phone details -->
     <div class="container my-3">
         <div id="phone-details">
